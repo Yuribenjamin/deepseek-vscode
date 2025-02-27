@@ -6,11 +6,11 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "vscode": "^1.85.0" 
+    "vscode": "^1.85.0"
   },
   "scripts": {
     "build": "yarn run compile",
-    "compile": "tsc -p ./",
+    "compile": "tsc -p ./ --listEmittedFiles",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "yarn run build && code .",
     "start:dev": "yarn run build && code --extensionDevelopmentPath=.",
@@ -23,10 +23,12 @@
     "publish": "vsce publish"
   },
   "dependencies": {
+    "@nestjs/axios": "^4.0.0",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "@vscode/vsce": "^3.2.2",
+    "axios": "^1.8.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
@@ -59,7 +61,7 @@
   "activationEvents": [
     "onStartupFinished"
   ],
-  "main": "./dist/extension.js",
+  "main": "./dist/src/extension.js",
   "contributes": {
     "configuration": {
       "title": "DeepSeek Coder",
@@ -71,7 +73,7 @@
         }
       }
     },
-    "commands":[
+    "commands": [
       {
         "command": "deepseek.runModel",
         "title": "Run DeepSeek Model"

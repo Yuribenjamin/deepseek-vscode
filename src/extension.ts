@@ -73,9 +73,13 @@ class Application {
   private registerCompletionProvider() {
     this.context.subscriptions.push(
       vscode.languages.registerCompletionItemProvider(
-        { scheme: 'file', language: 'javascript' },
+        [
+          { scheme: 'file', language: 'typescript' },
+          { scheme: 'file', language: 'javascript' },
+          { scheme: 'file', language: 'python' }, // Add more as needed
+        ],
         this.completionProvider,
-        '.',
+        '.', '(', // Additional trigger characters
       ),
     );
   }

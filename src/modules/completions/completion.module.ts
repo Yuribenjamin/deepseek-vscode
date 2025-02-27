@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CompletionProvider } from './completion.provider';
-import { OllamaService } from '../ollama/ollama.service';
-import { OllamaModule } from 'src/modules/ollama/ollama.module';
-import { LoggingModule } from 'src/modules/logging/logging.module';
+import { OllamaModule } from '../ollama/ollama.module';
+import { LoggingModule } from '../logging/logging.module';
 
 @Module({
   providers: [CompletionProvider],
