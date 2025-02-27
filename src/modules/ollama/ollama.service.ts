@@ -16,11 +16,12 @@ export class OllamaService {
 
   async listModels(): Promise<string[]> {
     return new Promise((resolve, reject) => {
-      const process = spawn('ollama', ['list', '--json']);
+      const process = spawn('ollama', ['list']);
       let output = '';
 
       process.stdout.on('data', (data: Buffer) => {
-        output += data.toString();
+        console.error('[DEBUG] Echo Outputss:', JSON.stringify(data));
+        output += JSON.stringify(data);
       });
 
       process.on('close', (code) => {

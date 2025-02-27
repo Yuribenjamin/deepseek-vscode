@@ -5,6 +5,9 @@
   "author": "Ibrahim Ragab",
   "private": true,
   "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0" 
+  },
   "scripts": {
     "build": "yarn run compile",
     "compile": "tsc -p ./",
@@ -54,9 +57,9 @@
     "typescript-eslint": "^8.20.0"
   },
   "activationEvents": [
-    "onCommand:deepseek.runModel",
     "onStartupFinished"
   ],
+  "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
       "title": "DeepSeek Coder",
@@ -67,6 +70,12 @@
           "description": "Enable or disable logging for AI interactions."
         }
       }
-    }
+    },
+    "commands":[
+      {
+        "command": "deepseek.runModel",
+        "title": "Run DeepSeek Model"
+      }
+    ]
   }
 }
