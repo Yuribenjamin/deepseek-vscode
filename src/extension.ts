@@ -41,6 +41,7 @@ class Application {
   private registerCommands() {
     this.context.subscriptions.push(
       vscode.commands.registerCommand('deepseek.runModel', async () => {
+        this.loggingService.log("resgiterd command deepseek.runModel")
         try {
           const models = await this.ollamaService.listModels();
           if (!models.length) {
@@ -62,7 +63,7 @@ class Application {
         } catch (error) {
           this.loggingService.logError(error);
           vscode.window.showErrorMessage(
-            `Failed to execute command: ${error instanceof Error ? error.message : 'Unknown error'}`,
+            `Failed to execute command : ${error instanceof Error ? error.message : 'Unknown error'}`,
           );
         }
       }),
@@ -72,9 +73,13 @@ class Application {
   private registerCompletionProvider() {
     this.context.subscriptions.push(
       vscode.languages.registerCompletionItemProvider(
-        { scheme: 'file', language: 'javascript' },
+        [
+          { scheme: 'file', language: 'typescript' },
+          { scheme: 'file', language: 'javascript' },
+          { scheme: 'file', language: 'python' }, // Add more as needed
+        ],
         this.completionProvider,
-        '.',
+        '.', '(', // Additional trigger characters
       ),
     );
   }

@@ -44,7 +44,7 @@ export class LoggingService {
 
   logError(error: unknown): void {
     if (!this.isLoggingEnabled()) return;
-
+    console.error(error)
     const message = error instanceof Error ? error.message : 'Unknown error';
     this.log(`ERROR: ${message}`);
   }
