@@ -1,7 +1,5 @@
-import { Injectable } from '@nestjs/common';
 import * as vscode from 'vscode';
 
-@Injectable()
 export class ConfigService {
   getTemperature(): number {
     return (

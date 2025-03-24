@@ -1,9 +1,7 @@
-import { Injectable } from '@nestjs/common';
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 
-@Injectable()
 export class LoggingService {
   private logFilePath: string;
 
